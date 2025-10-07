@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Pbg from "../public/pbg.png";
 
 export default function PricingSection() {
   const ref = useRef(null);
@@ -23,7 +24,8 @@ export default function PricingSection() {
     },
     {
       name: "Full Coaching (Nutrition + Training)",
-      subtitle: "Perfect for professionals ready to transform both body & habits",
+      subtitle:
+        "Perfect for professionals ready to transform both body & habits",
       price: "$899",
       period: "/ 12 weeks (~$299/mo)",
       features: [
@@ -38,7 +40,8 @@ export default function PricingSection() {
     },
     {
       name: "Private Coaching in Tiburon / Marin",
-      subtitle: "Ideal if you just want private, 1-on-1 training in Tiburon / Marin",
+      subtitle:
+        "Ideal if you just want private, 1-on-1 training in Tiburon / Marin",
       price: "$120",
       period: "/ session ($900 / 8 sessions)",
       features: [
@@ -53,8 +56,23 @@ export default function PricingSection() {
   ];
 
   return (
-    <section ref={ref} className="py-28 px-6 sm:px-10 bg-[#0B0B0B] text-white">
-      <div className="max-w-7xl mx-auto">
+    <section
+      ref={ref}
+      className="relative py-28 px-6 sm:px-10 text-white overflow-hidden"
+    >
+      {/* 🔹 Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+        style={{
+          backgroundImage: `url(${Pbg.src})`,
+          filter: "brightness(25%)", // ✅ darken image but keep faintly visible
+        }}
+      ></div>
+
+      {/* Optional subtle overlay for smooth darkness */}
+      <div className="absolute inset-0 bg-black/60" />
+
+      <div className="relative max-w-7xl mx-auto">
         {/* Heading */}
         <motion.div
           initial={{ y: 40, opacity: 0 }}
@@ -78,12 +96,13 @@ export default function PricingSection() {
               initial={{ y: 40, opacity: 0 }}
               animate={isInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.2 }}
-              className={`relative rounded-3xl border ${
+              className={`relative rounded-3xl border backdrop-blur-xl bg-white/10 ${
                 plan.highlight
-                  ? "bg-white text-black shadow-2xl border-transparent scale-[1.05]"
-                  : "bg-white/5 text-white border-white/10"
-              } p-10 flex flex-col items-start justify-between transition-all duration-300 hover:scale-[1.03]`}
+                  ? "shadow-2xl border-transparent scale-[1.05]"
+                  : "border-white/10"
+              } text-white p-10 flex flex-col items-start justify-between transition-all duration-300 hover:scale-[1.08] hover:bg-white/20`}
             >
+              {/* Recommended Badge */}
               {plan.highlight && (
                 <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#00E6BE] text-black text-sm font-semibold px-4 py-1 rounded-full shadow-md">
                   Recommended
@@ -91,53 +110,22 @@ export default function PricingSection() {
               )}
 
               <div>
-                <h3
-                  className={`text-2xl font-bold mb-3 ${
-                    plan.highlight ? "text-black" : "text-white"
-                  }`}
-                >
-                  {plan.name}
-                </h3>
-                <p
-                  className={`text-sm leading-snug mb-8 ${
-                    plan.highlight ? "text-gray-700" : "text-gray-300"
-                  }`}
-                >
+                <h3 className="text-2xl font-bold mb-3">{plan.name}</h3>
+                <p className="text-sm text-gray-300 leading-snug mb-8">
                   {plan.subtitle}
                 </p>
 
                 <div className="mb-8">
-                  <span
-                    className={`text-5xl font-bold ${
-                      plan.highlight ? "text-black" : "text-[#00E6BE]"
-                    }`}
-                  >
+                  <span className="text-5xl font-bold text-[#00E6BE]">
                     {plan.price}
                   </span>
-                  <p
-                    className={`text-sm mt-2 ${
-                      plan.highlight ? "text-gray-600" : "text-gray-400"
-                    }`}
-                  >
-                    {plan.period}
-                  </p>
+                  <p className="text-sm mt-2 text-gray-400">{plan.period}</p>
                 </div>
 
                 <ul className="space-y-4 mb-10">
                   {plan.features.map((feature, idx) => (
-                    <li
-                      key={idx}
-                      className={`flex items-start text-[15px] ${
-                        plan.highlight ? "text-gray-800" : "text-gray-300"
-                      }`}
-                    >
-                      <span
-                        className={`mr-3 text-lg ${
-                          plan.highlight ? "text-[#00E6BE]" : "text-[#00E6BE]"
-                        }`}
-                      >
-                        ✓
-                      </span>
+                    <li key={idx} className="flex items-start text-[15px]">
+                      <span className="mr-3 text-lg text-[#00E6BE]">✓</span>
                       {feature}
                     </li>
                   ))}
