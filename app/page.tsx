@@ -11,15 +11,40 @@ import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white scroll-smooth">
+      {/* ---------- Navbar ---------- */}
       <Navbar />
-      <Hero />
+
+      {/* ---------- Hero Section ---------- */}
+      <section id="who-its-for">
+        <Hero />
+      </section>
+
+      {/* ---------- Marquee ---------- */}
       <Marquee />
-      <ProblemSection />
+
+      {/* ---------- Programs ---------- */}
+      <section id="in-person">
+        <ProblemSection />
+      </section>
+
       <Marquee />
-      <SolutionSection />
-      <PricingSection />
+
+      {/* ---------- In-Person ---------- */}
+      <section id="programs">
+        <SolutionSection />
+      </section>
+
+      {/* ---------- Pricing ---------- */}
+      <section id="faq">
+        <PricingSection />
+      </section>
+
+
+      {/* ---------- CTA ---------- */}
       <CTASection />
+
+      {/* ---------- Footer ---------- */}
       <Footer />
     </main>
   )

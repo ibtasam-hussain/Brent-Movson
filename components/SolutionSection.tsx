@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import {
-  Dumbbell,
   Clock,
   Utensils,
   LineChart,
@@ -12,7 +11,7 @@ import {
   Gem,
   Trophy,
 } from "lucide-react";
-import Jog from "../public/running.jpg";
+import Jog from "../public/running.jpg"; // replace with your real images
 
 export default function ShapeSection() {
   const features = [
@@ -31,90 +30,93 @@ export default function ShapeSection() {
   ];
 
   return (
-    <section className="bg-[#f7f7f7] py-16 md:py-24 px-6 md:px-12 lg:px-24 text-gray-900">
-      {/* ------------- S.H.A.P.E. SYSTEM ------------- */}
-<div className="grid md:grid-cols-2 gap-6 items-center mb-56"> {/* ⬅ gap slightly reduced, mb adjusted */}
-  {/* Left Text */}
-  <div>
-    <h2 className="text-4xl md:text-5xl font-extrabold">
-      THE <span className="text-[#00bfa5]">S.H.A.P.E.</span> SYSTEM
-    </h2>
-    <p className="text-base md:text-lg font-semibold tracking-wide text-gray-700 mt-3">
-      STRENGTH • HYBRID • ATHLETE • PHYSIQUE • ELITE
-    </p>
-    <p className="text-lg text-gray-700 mt-6 leading-relaxed">
-      A flagship method combining strength training, functional fitness,
-      and physique science.
-    </p>
+    <section className="bg-[#f7f7f7] py-28 px-6 md:px-12 lg:px-24">
+      <div className="max-w-6xl mx-auto flex flex-col gap-40">
+        {/* ----------- S.H.A.P.E. SYSTEM ----------- */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-16 md:gap-20">
+          {/* Left Text */}
+          <div className="flex-1 max-w-lg">
+            <h2 className="text-4xl md:text-[44px] font-extrabold leading-snug tracking-tight text-[#0f0f0f]">
+              THE <span className="text-[#00bfa5]">S.H.A.P.E.</span> SYSTEM
+            </h2>
+            <p className="text-base md:text-lg font-semibold tracking-wider text-gray-700 mt-2">
+              STRENGTH • HYBRID • ATHLETE • PHYSIQUE • ELITE
+            </p>
+            <p className="text-lg text-gray-700 mt-6 leading-relaxed">
+              A flagship method combining strength training, functional fitness, and physique science.
+            </p>
 
-    <ul className="mt-8 space-y-4">
-      {features.map((item, i) => (
-        <li key={i} className="flex items-start gap-4 text-lg">
-          <div className="bg-[#00bfa5] p-3 rounded-full flex items-center justify-center">
-            {React.cloneElement(item.icon, { className: "text-white w-6 h-6" })}
+            <ul className="mt-8 space-y-4">
+              {features.map((item, i) => (
+                <li key={i} className="flex items-start gap-4 text-lg">
+                  <div className="bg-[#00bfa5] p-3 rounded-full flex items-center justify-center shrink-0">
+                    {React.cloneElement(item.icon, { className: "text-white w-6 h-6" })}
+                  </div>
+                  <span>{item.text}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button className="mt-10 bg-[#00bfa5] hover:bg-[#00a98e] text-white font-semibold py-3.5 px-10 rounded-full transition text-lg shadow-sm">
+              Start Now
+            </button>
           </div>
-          <span>{item.text}</span>
-        </li>
-      ))}
-    </ul>
 
-    <button className="mt-10 bg-[#00bfa5] hover:bg-[#00a98e] text-white font-semibold py-3.5 px-10 rounded-full transition text-lg">
-      Start Now
-    </button>
-  </div>
-
-  {/* Right Image */}
-  <div className="flex justify-center">
-    <Image
-      src={Jog}
-      alt="Athlete training"
-      width={450}
-      height={500}
-      className="rounded-2xl object-cover w-[75%] h-auto shadow-lg"
-    />
-  </div>
-</div>
-
-
-{/* ------------- WHY CLIENTS INVEST ------------- */}
-<div className="grid md:grid-cols-2 gap-10 items-center"> {/* ⬅ horizontal gap increased */}
-  {/* Left Image */}
-  <div className="flex justify-center order-2 md:order-1">
-    <Image
-      src={Jog}
-      alt="Trainers posing"
-      width={450}
-      height={500}
-      className="rounded-2xl object-cover w-[75%] h-auto shadow-lg"
-    />
-  </div>
-
-  {/* Right Text */}
-  <div className="order-1 md:order-2">
-    <h2 className="text-4xl md:text-5xl font-extrabold">
-      WHY CLIENTS <span className="text-[#00bfa5]">INVEST</span>
-    </h2>
-    <p className="text-lg text-gray-700 mt-4 leading-relaxed">
-      Choose the program that fits your life — let’s see how that looks.
-    </p>
-
-    <ul className="mt-8 space-y-4">
-      {investPoints.map((item, i) => (
-        <li key={i} className="flex items-start gap-4 text-lg">
-          <div className="bg-[#00bfa5] p-3 rounded-full flex items-center justify-center">
-            {React.cloneElement(item.icon, { className: "text-white w-6 h-6" })}
+          {/* Right Image */}
+          <div className="flex-1 flex justify-center">
+            <div className="w-[500px] h-[420px] rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src={Jog}
+                alt="Athlete training"
+                className="w-full h-full object-cover"
+                width={500}
+                height={420}
+              />
+            </div>
           </div>
-          <span>{item.text}</span>
-        </li>
-      ))}
-    </ul>
+        </div>
 
-    <button className="mt-10 bg-[#00bfa5] hover:bg-[#00a98e] text-white font-semibold py-3.5 px-10 rounded-full transition text-lg">
-      Start Now
-    </button>
-  </div>
-</div>
+        {/* ----------- WHY CLIENTS INVEST ----------- */}
+        <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-32 md:gap-40">
+          {/* Right Text */}
+          <div className="flex-1 max-w-lg">
+            <h2 className="text-4xl md:text-[44px] font-extrabold leading-snug tracking-tight text-[#0f0f0f]">
+              WHY CLIENTS <span className="text-[#00bfa5]">INVEST</span>
+            </h2>
+            <p className="text-lg text-gray-700 mt-4 leading-relaxed">
+              Choose the program that fits your life — let’s see how that looks.
+            </p>
 
+            <ul className="mt-8 space-y-4">
+              {investPoints.map((item, i) => (
+                <li key={i} className="flex items-start gap-4 text-lg">
+                  <div className="bg-[#00bfa5] p-3 rounded-full flex items-center justify-center shrink-0">
+                    {React.cloneElement(item.icon, { className: "text-white w-6 h-6" })}
+                  </div>
+                  <span>{item.text}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button className="mt-10 bg-[#00bfa5] hover:bg-[#00a98e] text-white font-semibold py-3.5 px-10 rounded-full transition text-lg shadow-sm">
+              Start Now
+            </button>
+          </div>
+
+          {/* Left Image */}
+          <div className="flex-1 flex justify-center">
+            <div className="w-[500px] h-[420px] rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src={Jog}
+                alt="Trainers posing"
+                className="w-full h-full object-cover"
+                width={500}
+                height={620}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
