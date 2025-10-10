@@ -11,7 +11,7 @@ import {
   Gem,
   Trophy,
 } from "lucide-react";
-import Jog from "../public/running.jpg"; // replace with your real images
+import Jog from "../public/running.jpg";
 
 export default function ShapeSection() {
   const features = [
@@ -64,13 +64,26 @@ export default function ShapeSection() {
 
           {/* Right Image */}
           <div className="flex-1 flex justify-center">
-            <div className="w-[500px] h-[420px] rounded-2xl overflow-hidden shadow-lg">
+            <div
+              className="
+                relative
+                w-full
+                max-w-[500px]
+                rounded-2xl overflow-hidden shadow-lg
+                sm:max-w-[400px]
+                md:max-w-[450px]
+                lg:max-w-[500px]
+                aspect-[5/4]
+                min-h-[280px]            /* ✅ ensures visible height on mobile */
+              "
+            >
               <Image
                 src={Jog}
                 alt="Athlete training"
-                className="w-full h-full object-cover"
-                width={500}
-                height={420}
+                fill
+                className="object-cover object-center rotate-0"
+                sizes="(max-width: 768px) 90vw, (max-width: 1024px) 60vw, 500px"
+                priority
               />
             </div>
           </div>
@@ -105,13 +118,26 @@ export default function ShapeSection() {
 
           {/* Left Image */}
           <div className="flex-1 flex justify-center">
-            <div className="w-[500px] h-[420px] rounded-2xl overflow-hidden shadow-lg">
+            <div
+              className="
+                relative
+                w-full
+                max-w-[500px]
+                rounded-2xl overflow-hidden shadow-lg
+                sm:max-w-[400px]
+                md:max-w-[450px]
+                lg:max-w-[500px]
+                aspect-[5/4]
+                min-h-[280px]            /* ✅ ensures visible height on mobile */
+              "
+            >
               <Image
                 src={Jog}
-                alt="Trainers posing"
-                className="w-full h-full object-cover"
-                width={500}
-                height={620}
+                alt="Athlete training"
+                fill
+                className="object-cover object-center rotate-0"
+                sizes="(max-width: 768px) 90vw, (max-width: 1024px) 60vw, 500px"
+                priority
               />
             </div>
           </div>

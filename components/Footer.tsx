@@ -6,27 +6,22 @@ import {
   FaPinterestP,
   FaLinkedinIn,
 } from "react-icons/fa";
-import fbg from "../public/fbg.svg"
+import fbg from "../public/fbg.svg";
 
 export default function Footer() {
-  console.log("Sdasd",fbg)
   return (
-   
-<footer className="relative bg-[#0A0A0A] text-white py-20 px-8 overflow-hidden">
-<div
-  className="absolute inset-0 bg-cover opacity-70"
-  style={{
-    backgroundImage: `url("/fbg.svg")`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",        // full cover kare
-    backgroundPosition: "bottom",   // bottom align, top se cut ho sakta hai
-    zIndex: 0,
-  }}
-></div>
-
-
-
-
+    <footer className="relative bg-[#0A0A0A] text-white py-20 px-8 overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover opacity-70"
+        style={{
+          backgroundImage: `url("/fbg.svg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "bottom",
+          zIndex: 0,
+        }}
+      ></div>
 
       {/* Greenish Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#003C31]/70 via-[#009e8a]/50 to-[#00E6BE]/40 mix-blend-overlay"></div>
@@ -68,7 +63,15 @@ export default function Footer() {
             />
             <button
               type="submit"
-              className="bg-[#00E6BE] text-black font-semibold px-8 py-3 rounded-r-full hover:bg-[#00CBA8] transition-colors"
+              className="
+                bg-[#00E6BE] text-black font-semibold 
+                px-5 py-2 text-sm 
+                sm:px-6 sm:py-2.5 sm:text-base 
+                md:px-7 md:py-3 md:text-base 
+                lg:px-8 lg:py-3 lg:text-lg 
+                rounded-r-full hover:bg-[#00CBA8] transition-all
+                whitespace-nowrap
+              "
             >
               Try Now
             </button>

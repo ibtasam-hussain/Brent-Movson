@@ -8,17 +8,19 @@ import heroPerson from "@/public/Subtract.svg";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-transparent">
-      <div className="absolute inset-0 z-0">
+      {/* ---------- Blurred Background ---------- */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src={heroBg}
           alt="Background"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center scale-105 blur-[8px] brightness-75"
         />
       </div>
 
-      <div className="absolute inset-x-0 top-1/4 bottom-1/4 bg-[#0a0a0a]/70 rounded-[40px] -z-[5]" />
+      {/* ---------- Dark Overlay for contrast ---------- */}
+      <div className="absolute inset-x-0 top-1/4 bottom-1/4 bg-black/50 rounded-[40px] -z-[5]" />
 
       <div className="relative z-10 w-full max-w-[110rem] mx-auto px-2 sm:px-6 lg:px-8 overflow-visible">
         <div
@@ -26,7 +28,7 @@ export default function Hero() {
           bg-black/60 backdrop-blur-md rounded-3xl 
           px-8 sm:px-12 md:px-16 lg:px-24 
           overflow-visible w-full
-          h-[65vh] lg:h-[60vh]"  
+          h-[65vh] lg:h-[60vh]"
         >
           <motion.div
             initial={{ x: -80, opacity: 0 }}
@@ -56,21 +58,42 @@ export default function Hero() {
             </motion.button>
           </motion.div>
 
+          {/* ---------- Right Image ---------- */}
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative flex justify-center lg:justify-end items-center z-30 overflow-visible lg:-ml-[8rem]"
+            className="
+              relative flex justify-center lg:justify-end items-center 
+              z-30 overflow-visible 
+              lg:-ml-[6rem]
+              group                /* ✅ Added group to enable hover effect */
+            "
           >
             <div
-              className="relative w-[180%] sm:w-[200%] md:w-[220%] lg:w-[240%]
-              max-w-none -mr-[25%] lg:-mr-[30%]
-              overflow-visible drop-shadow-[0_35px_60px_rgba(0,0,0,0.6)]"
+              className="
+                relative 
+                overflow-visible
+                drop-shadow-[0_35px_60px_rgba(0,0,0,0.6)]
+                w-[clamp(29px,60vw,620px)]     
+                sm:w-[clamp(280px,50vw,600px)]
+                md:w-[clamp(420px,55vw,760px)]
+                lg:w-[clamp(480px,50vw,820px)]
+                xl:w-[clamp(520px,45vw,880px)]
+                translate-x-[-10%] sm:translate-x-[-5%] md:translate-x-0 
+                lg:translate-x-[10%] xl:translate-x-[15%]
+                transition-transform duration-500 ease-out
+              "
             >
               <Image
                 src={heroPerson}
                 alt="Hero Athlete"
-                className="w-full h-auto object-contain"
+                className="
+                  w-full h-auto object-contain 
+                  scale-110 sm:scale-100     
+                  transition-transform duration-700 ease-out
+                  lg:group-hover:scale-110   /* ✅ only scales on hover at lg+ screens */
+                "
                 priority
               />
             </div>
