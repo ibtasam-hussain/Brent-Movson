@@ -113,7 +113,7 @@ export default function Footer() {
       {/* --- Copyright --- */}
       <div className="relative border-t border-white/10 mt-14 pt-6">
         <p className="text-center text-gray-500 text-sm">
-          © Brentmovson {new Date().getFullYear()} All Rights Reserved
+          © Brentmovson 2024 All Rights Reserved
         </p>
       </div>
     </footer>

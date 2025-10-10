@@ -3,38 +3,50 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import heroBg from "../public/hero.svg";
-import heroPerson from "@/public/Subtract.svg";
+import heroPerson from "@/public/hero image (1).svg";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-transparent">
-      {/* ---------- Blurred Background ---------- */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+    <section
+  className="relative min-h-screen flex items-center justify-center overflow-visible bg-transparent"
+  style={{
+    paddingTop:
+      "calc((var(--nav-h, 80px)) + env(safe-area-inset-top, 0px) + 1rem)",
+    scrollMarginTop:
+      "calc((var(--nav-h, 80px)) + env(safe-area-inset-top, 0px) + 1rem)",
+  }}
+>
+
+      <div className="absolute inset-0 z-0">
         <Image
           src={heroBg}
           alt="Background"
           fill
           priority
-          className="object-cover object-center scale-105 blur-[8px] brightness-75"
+          className="object-cover object-center"
         />
+        <div className="absolute inset-0 backdrop-blur-md bg-black/40" />{" "}
+        {/* 👈 adds blur overlay */}
       </div>
 
-      {/* ---------- Dark Overlay for contrast ---------- */}
-      <div className="absolute inset-x-0 top-1/4 bottom-1/4 bg-black/50 rounded-[40px] -z-[5]" />
+      <div className="absolute inset-x-0 top-1/4 bottom-1/4 bg-[#0a0a0a]/70 rounded-[40px] -z-[5]" />
 
-      <div className="relative z-10 w-full max-w-[110rem] mx-auto px-2 sm:px-6 lg:px-8 overflow-visible">
+      <div className="relative z-10 w-full max-w-[110rem] mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
         <div
-          className="relative flex flex-col lg:flex-row items-center justify-between 
-          bg-black/60 backdrop-blur-md rounded-3xl 
-          px-8 sm:px-12 md:px-16 lg:px-24 
-          overflow-visible w-full
-          h-[65vh] lg:h-[60vh]"
+          className="
+relative grid grid-cols-1 lg:grid-cols-12 items-center gap-8 md:gap-10
+bg-black/60 backdrop-blur-md rounded-3xl
+px-6 sm:px-10 md:px-14 lg:px-16 xl:px-24
+w-full
+min-h-[clamp(28rem,62vh,44rem)] py-10 md:py-12
+"
         >
+          {/* Left: Text */}
           <motion.div
             initial={{ x: -80, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative z-20 w-full lg:w-[50%] text-center lg:text-left"
+            className="lg:col-span-6 text-center lg:text-left"
           >
             <h1 className="text-3xl sm:text-4xl lg:text-[3rem] font-extrabold text-white leading-tight tracking-tight">
               DROP FAT. BUILD MUSCLE.
@@ -58,44 +70,22 @@ export default function Hero() {
             </motion.button>
           </motion.div>
 
-          {/* ---------- Right Image ---------- */}
+          {/* Right: Image */}
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="
-              relative flex justify-center lg:justify-end items-center 
-              z-30 overflow-visible 
-              lg:-ml-[6rem]
-              group                /* ✅ Added group to enable hover effect */
-            "
+            className="lg:col-span-6 flex justify-center lg:justify-end"
           >
-            <div
-              className="
-                relative 
-                overflow-visible
-                drop-shadow-[0_35px_60px_rgba(0,0,0,0.6)]
-                w-[clamp(29px,60vw,620px)]     
-                sm:w-[clamp(280px,50vw,600px)]
-                md:w-[clamp(420px,55vw,760px)]
-                lg:w-[clamp(480px,50vw,820px)]
-                xl:w-[clamp(520px,45vw,880px)]
-                translate-x-[-10%] sm:translate-x-[-5%] md:translate-x-0 
-                lg:translate-x-[10%] xl:translate-x-[15%]
-                transition-transform duration-500 ease-out
-              "
-            >
-              <Image
-                src={heroPerson}
-                alt="Hero Athlete"
-                className="
-                  w-full h-auto object-contain 
-                  scale-110 sm:scale-100     
-                  transition-transform duration-700 ease-out
-                  lg:group-hover:scale-110   /* ✅ only scales on hover at lg+ screens */
-                "
-                priority
-              />
+            <div className="relative w-full max-w-[520px] sm:max-w-[600px] md:max-w-[680px] lg:max-w-[720px] xl:max-w-[780px]">
+<Image
+  src={heroPerson}
+  alt="Hero Athlete"
+  priority
+  className="w-full h-auto object-contain lg:scale-175" // 👈 Doubles visual size
+/>
+
+
             </div>
           </motion.div>
         </div>
