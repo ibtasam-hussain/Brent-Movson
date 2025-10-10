@@ -6,16 +6,15 @@ import {
   FaPinterestP,
   FaLinkedinIn,
 } from "react-icons/fa";
-import fbg from "../public/fbg.svg";
 
 export default function Footer() {
   return (
     <footer className="relative bg-[#0A0A0A] text-white py-20 px-8 overflow-hidden">
-      {/* Background Image */}
+      {/* Responsive Background Image */}
       <div
-        className="absolute inset-0 bg-cover opacity-70"
+        className="absolute inset-0 bg-cover opacity-70 
+        bg-[url('/fbg-mobile.svg')] md:bg-[url('/fbg.svg')]"
         style={{
-          backgroundImage: `url("/fbg.svg")`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "bottom",
@@ -28,7 +27,7 @@ export default function Footer() {
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
-        {/* --- Left Section --- */}
+        {/* Left Section */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold tracking-wide">BRENT MOVSON</h3>
           <p className="text-gray-400 text-sm">
@@ -50,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* --- Center Section (Newsletter) --- */}
+        {/* Center Section (Newsletter) */}
         <div className="space-y-6">
           <h4 className="text-xl font-semibold">
             Signup for our Daily Newsletter
@@ -63,22 +62,14 @@ export default function Footer() {
             />
             <button
               type="submit"
-              className="
-                bg-[#00E6BE] text-black font-semibold 
-                px-5 py-2 text-sm 
-                sm:px-6 sm:py-2.5 sm:text-base 
-                md:px-7 md:py-3 md:text-base 
-                lg:px-8 lg:py-3 lg:text-lg 
-                rounded-r-full hover:bg-[#00CBA8] transition-all
-                whitespace-nowrap
-              "
+              className="bg-[#00E6BE] text-black font-semibold px-6 py-3 text-sm md:text-base rounded-r-full hover:bg-[#00CBA8] transition-all whitespace-nowrap"
             >
               Try Now
             </button>
           </form>
         </div>
 
-        {/* --- Right Section (Programs) --- */}
+        {/* Right Section (Programs) */}
         <div className="space-y-4 md:text-right">
           <h4 className="text-xl font-semibold mb-2">Programs</h4>
           <ul className="space-y-2 text-sm">
@@ -110,7 +101,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* --- Copyright --- */}
+      {/* Copyright */}
       <div className="relative border-t border-white/10 mt-14 pt-6">
         <p className="text-center text-gray-500 text-sm">
           © Brentmovson 2024 All Rights Reserved
