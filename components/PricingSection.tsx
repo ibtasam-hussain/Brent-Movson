@@ -8,52 +8,51 @@ export default function PricingSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const plans = [
-    {
-      name: "Fitness-Only Coaching",
-      subtitle: "Ideal if you just want the workouts and structure",
-      price: "$499",
-      period: "/ 12 weeks (~$165/mo)",
-      features: [
-        "BMZ App access",
-        "S.H.A.P.E hybrid training",
-        "Gym/home/travel plans",
-        "Weekly adjustments",
-      ],
-      highlight: false,
-    },
-    {
-      name: "Full Coaching (Nutrition + Training)",
-      subtitle:
-        "Perfect for professionals ready to transform both body & habits",
-      price: "$899",
-      period: "/ 12 weeks (~$299/mo)",
-      features: [
-        "Personalized macros + 1:1 coaching with a nutritionist",
-        "Concierge daily access",
-        "S.H.A.P.E training + tailored plans",
-        "Supplement optimization",
-        "Weekly recalibration",
-        "Exclusive recipes",
-      ],
-      highlight: true,
-    },
-    {
-      name: "Private Coaching in Tiburon / Marin",
-      subtitle:
-        "Ideal if you just want private, 1-on-1 training in Tiburon / Marin",
-      price: "$120",
-      period: "/ session ($900 / 8 sessions)",
-      features: [
-        "Exclusive 1:1 training or private with Brent",
-        "1:1 coaching with nutritionist",
-        "Tailored workouts designed for you and one area",
-        "Accountability and results",
-        "24/7 access to your coach via the app",
-      ],
-      highlight: false,
-    },
-  ];
+const plans = [
+  {
+    name: "Fitness-Only Coaching",
+    subtitle: "Ideal if you just want the workouts and structure.",
+    price: "$499",
+    period: "/ 12 weeks (~$165/mo)",
+    features: [
+      "BM2 App access",
+      "S.H.A.P.E. hybrid training",
+      "Gym/home/travel plans",
+      "Weekly adjustments",
+    ],
+    highlight: false,
+  },
+  {
+    name: "Full Coaching (Nutrition + Training)",
+    subtitle: "Perfect for professionals ready to transform both body & habits.",
+    price: "$899",
+    period: "/ 12 weeks (~$299/mo)",
+    features: [
+      "Personalized macros + 1:1 Coaching with a nutritionist",
+      "Concierge daily access",
+      "S.H.A.P.E. training + tailored plans",
+      "Supplement optimization",
+      "Weekly recalibration",
+      "Exclusive recipes",
+    ],
+    highlight: true,
+  },
+  {
+    name: "Private Coaching in Tiburon / Marin",
+    subtitle: "Ideal if you just want Private, 1-on-1 training in Tiburon / Marin.",
+    price: "$120",
+    period: "/ session ($900 / 10 sessions)",
+    features: [
+      "Exclusive 1:1 training in a private with Brent",
+      "1:1 coaching with nutritionist",
+      "Custom workouts designed for you and no one else",
+      "Accountability and results",
+      "24/7 access to your coach via the app",
+    ],
+    highlight: false,
+  },
+];
+
 
   return (
     <section
@@ -132,15 +131,19 @@ export default function PricingSection() {
                 </ul>
               </div>
 
-              <button
-                className={`w-full py-3 mt-auto rounded-full text-lg font-semibold border transition-all duration-200 ${
-                  plan.highlight
-                    ? "bg-[#00E6BE] text-black hover:bg-[#00c9a6]"
-                    : "border-[#00E6BE] text-[#00E6BE] hover:bg-[#00E6BE] hover:text-black"
-                }`}
-              >
-                Start Now
-              </button>
+<a
+  href="https://calendly.com/brent-ykk/health-coaching-w-brent?month=2025-10"
+  target="_blank"
+  rel="noopener noreferrer"
+  className={`w-full py-3 mt-auto rounded-full text-lg font-semibold border text-center transition-all duration-200 ${
+    plan.highlight
+      ? "bg-[#00E6BE] text-black hover:bg-[#00c9a6]"
+      : "border-[#00E6BE] text-[#00E6BE] hover:bg-[#00E6BE] hover:text-black"
+  }`}
+>
+  Start Now
+</a>
+
             </motion.div>
           ))}
         </div>

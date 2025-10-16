@@ -47,14 +47,26 @@ export default function CTASection() {
 
           <div className="mt-12 flex flex-col sm:flex-row gap-5 justify-center items-center">
             {/* Left Button */}
-            <button className="flex items-center gap-2 bg-white text-black px-8 sm:px-10 py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all duration-200">
-              Join Fitness Only <Dumbbell className="w-5 h-5" />
-            </button>
+{/* Left Button — Fitness Only */}
+<a
+  href="https://www.trainerize.me/profile/bm21/?planGUID=f17967e40f334dc2a4e8d9b104346b3e&mode=checkout"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 bg-white text-black px-8 sm:px-10 py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all duration-200"
+>
+  Join Fitness Only <Dumbbell className="w-5 h-5" />
+</a>
 
-            {/* Right Button */}
-            <button className="flex items-center gap-2 bg-[#00ffd1] text-black px-8 sm:px-10 py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-[#00e6bc] transition-all duration-200">
-              Join Full Coaching <ArrowRight className="w-5 h-5" />
-            </button>
+{/* Right Button — Full Coaching */}
+<a
+  href="https://www.trainerize.me/profile/bm21/?planGUID=9178eecceba5456e8e2b7bcd4f9d7f25&mode=checkout"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 bg-[#00ffd1] text-black px-8 sm:px-10 py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-[#00e6bc] transition-all duration-200"
+>
+  Join Full Coaching <ArrowRight className="w-5 h-5" />
+</a>
+
           </div>
         </div>
       </motion.div>

@@ -3,19 +3,17 @@
 import { motion } from "framer-motion"
 
 export default function Marquee() {
-  const text = "MUSCLE • GAIN STRENGTH • GET HEALTHY • STAY ACTIVE • FEEL GREAT • "
+  const text = " • MOVE BETTER • FEEL BETTER • LIVE BETTER • MOVE BETTER • FEEL BETTER • LIVE BETTER • MOVE BETTER • FEEL BETTER • LIVE BETTER • MOVE BETTER • FEEL BETTER • LIVE BETTER"
 
   return (
-    <div className="bg-[#0b2f2a] py-6 overflow-hidden"> {/* darker tone, more height */}
+    <div className="bg-[#0b2f2a] py-6 overflow-hidden">
       <motion.div
-        animate={{ x: [0, -1200] }} // increased distance for smooth loop
+        animate={{ x: ["0%", "-80.33%"] }} // moves one-third of total width
         transition={{
-          x: {
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "loop",
-            duration: 25, // slower movement
-            ease: "linear",
-          },
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 15, // adjust speed
+          ease: "linear",
         }}
         className="flex whitespace-nowrap"
       >

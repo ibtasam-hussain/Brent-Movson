@@ -61,13 +61,18 @@ min-h-[clamp(28rem,62vh,44rem)] py-10 md:py-12
               fit into real life.
             </p>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-6 bg-[#3EF4C8] text-black px-8 sm:px-10 py-3 sm:py-3.5 rounded-full text-base sm:text-lg font-semibold hover:bg-[#2fd7ae] transition-all inline-flex items-center gap-2"
-            >
-              Start your Transformation →
-            </motion.button>
+<motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={() => {
+    const section = document.getElementById("programs")
+    section?.scrollIntoView({ behavior: "smooth" })
+  }}
+  className="mt-6 bg-[#3EF4C8] text-black px-8 sm:px-10 py-3 sm:py-3.5 rounded-full text-base sm:text-lg font-semibold hover:bg-[#2fd7ae] transition-all inline-flex items-center gap-2"
+>
+  Start your Transformation →
+</motion.button>
+
           </motion.div>
 
           {/* Right: Image */}
@@ -82,7 +87,7 @@ min-h-[clamp(28rem,62vh,44rem)] py-10 md:py-12
   src={heroPerson}
   alt="Hero Athlete"
   priority
-  className="w-full h-auto object-contain lg:scale-175" // 👈 Doubles visual size
+  className="w-full h-auto object-contain lg:scale-157" // 👈 Doubles visual size
 />
 
 
