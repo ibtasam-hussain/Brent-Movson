@@ -8,51 +8,52 @@ export default function PricingSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-const plans = [
-  {
-    name: "Fitness-Only Coaching",
-    subtitle: "Ideal if you just want the workouts and structure.",
-    price: "$499",
-    period: "/ 12 weeks (~$165/mo)",
-    features: [
-      "BM2 App access",
-      "S.H.A.P.E. hybrid training",
-      "Gym/home/travel plans",
-      "Weekly adjustments",
-    ],
-    highlight: false,
-  },
-  {
-    name: "Full Coaching (Nutrition + Training)",
-    subtitle: "Perfect for professionals ready to transform both body & habits.",
-    price: "$899",
-    period: "/ 12 weeks (~$299/mo)",
-    features: [
-      "Personalized macros + 1:1 Coaching with a nutritionist",
-      "Concierge daily access",
-      "S.H.A.P.E. training + tailored plans",
-      "Supplement optimization",
-      "Weekly recalibration",
-      "Exclusive recipes",
-    ],
-    highlight: true,
-  },
-  {
-    name: "Private Coaching in Tiburon / Marin",
-    subtitle: "Ideal if you just want Private, 1-on-1 training in Tiburon / Marin.",
-    price: "$120",
-    period: "/ session ($900 / 10 sessions)",
-    features: [
-      "Exclusive 1:1 training in a private with Brent",
-      "1:1 coaching with nutritionist",
-      "Custom workouts designed for you and no one else",
-      "Accountability and results",
-      "24/7 access to your coach via the app",
-    ],
-    highlight: false,
-  },
-];
-
+  const plans = [
+    {
+      name: "Fitness-Only Coaching",
+      subtitle: "Ideal if you just want the workouts and structure.",
+      price: "$165",
+      period: "/ 4 weeks",
+      features: [
+        "BM2 App access",
+        "S.H.A.P.E. hybrid training",
+        "Gym/home/travel plans",
+        "Weekly adjustments",
+      ],
+      highlight: false,
+    },
+    {
+      name: "Full Coaching (Nutrition + Training)",
+      subtitle:
+        "Perfect for professionals ready to transform both body & habits.",
+      price: "$299",
+      period: "/ 4 weeks",
+      features: [
+        "Personalized macros + 1:1 Coaching with a nutritionist",
+        "Concierge daily access",
+        "S.H.A.P.E. training + tailored plans",
+        "Supplement optimization",
+        "Weekly recalibration",
+        "Exclusive recipes",
+      ],
+      highlight: true,
+    },
+    {
+      name: "Private Coaching in Tiburon / Marin",
+      subtitle:
+        "Ideal if you just want Private, 1-on-1 training in Tiburon / Marin.",
+      price: "$900",
+      period: "/ 10 sessions",
+      features: [
+        "Exclusive 1:1 training in a private with Brent",
+        "1:1 coaching with nutritionist",
+        "Custom workouts designed for you and no one else",
+        "Accountability and results",
+        "24/7 access to your coach via the app",
+      ],
+      highlight: false,
+    },
+  ];
 
   return (
     <section
@@ -79,11 +80,9 @@ const plans = [
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-2 tracking-tight">
-            FIND THE COACHING PATH
-          </h2>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            <span className="text-[#00E6BE]">THAT FITS YOU</span>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-25 tracking-tight">
+            PRICING {"  "}
+            <span className="text-[#00E6BE]">PLANS</span>
           </h2>
         </motion.div>
 
@@ -131,19 +130,18 @@ const plans = [
                 </ul>
               </div>
 
-<a
-  href="https://calendly.com/brent-ykk/health-coaching-w-brent?month=2025-10"
-  target="_blank"
-  rel="noopener noreferrer"
-  className={`w-full py-3 mt-auto rounded-full text-lg font-semibold border text-center transition-all duration-200 ${
-    plan.highlight
-      ? "bg-[#00E6BE] text-black hover:bg-[#00c9a6]"
-      : "border-[#00E6BE] text-[#00E6BE] hover:bg-[#00E6BE] hover:text-black"
-  }`}
->
-  Start Now
-</a>
-
+              <a
+                href="https://calendly.com/brent-ykk/health-coaching-w-brent?month=2025-10"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full py-3 mt-auto rounded-full text-lg font-semibold border text-center transition-all duration-200 ${
+                  plan.highlight
+                    ? "bg-[#00c9a6] text-black hover:bg-[#00E6BE]"
+                    : "border-[#00E6BE] text-[#00E6BE] hover:bg-[#00E6BE] hover:text-black"
+                }`}
+              >
+                Apply Now
+              </a>
             </motion.div>
           ))}
         </div>

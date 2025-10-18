@@ -4,19 +4,19 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import heroBg from "../public/hero.svg";
 import heroPerson from "@/public/hero image (1).svg";
+import Link from "next/link";
 
 export default function Hero() {
   return (
     <section
-  className="relative min-h-screen flex items-center justify-center overflow-visible bg-transparent"
-  style={{
-    paddingTop:
-      "calc((var(--nav-h, 80px)) + env(safe-area-inset-top, 0px) + 1rem)",
-    scrollMarginTop:
-      "calc((var(--nav-h, 80px)) + env(safe-area-inset-top, 0px) + 1rem)",
-  }}
->
-
+      className="relative min-h-screen flex items-center justify-center overflow-visible bg-transparent"
+      style={{
+        paddingTop:
+          "calc((var(--nav-h, 80px)) + env(safe-area-inset-top, 0px) + 1rem)",
+        scrollMarginTop:
+          "calc((var(--nav-h, 80px)) + env(safe-area-inset-top, 0px) + 1rem)",
+      }}
+    >
       <div className="absolute inset-0 z-0">
         <Image
           src={heroBg}
@@ -60,19 +60,19 @@ min-h-[clamp(28rem,62vh,44rem)] py-10 md:py-12
               precise nutrition, smart training, and daily support designed to
               fit into real life.
             </p>
-
-<motion.button
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  onClick={() => {
-    const section = document.getElementById("programs")
-    section?.scrollIntoView({ behavior: "smooth" })
-  }}
-  className="mt-6 bg-[#3EF4C8] text-black px-8 sm:px-10 py-3 sm:py-3.5 rounded-full text-base sm:text-lg font-semibold hover:bg-[#2fd7ae] transition-all inline-flex items-center gap-2"
->
-  Start your Transformation →
-</motion.button>
-
+            <Link href="#faq">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const section = document.getElementById("programs");
+                  section?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="mt-6 bg-[#3EF4C8] text-black px-8 sm:px-10 py-3 sm:py-3.5 rounded-full text-base sm:text-lg font-semibold hover:bg-[#2fd7ae] transition-all inline-flex items-center gap-2"
+              >
+                Start your Transformation →
+              </motion.button>
+            </Link>
           </motion.div>
 
           {/* Right: Image */}
@@ -83,14 +83,12 @@ min-h-[clamp(28rem,62vh,44rem)] py-10 md:py-12
             className="lg:col-span-6 flex justify-center lg:justify-end"
           >
             <div className="relative w-full max-w-[520px] sm:max-w-[600px] md:max-w-[680px] lg:max-w-[720px] xl:max-w-[780px]">
-<Image
-  src={heroPerson}
-  alt="Hero Athlete"
-  priority
-  className="w-full h-auto object-contain lg:scale-157" // 👈 Doubles visual size
-/>
-
-
+              <Image
+                src={heroPerson}
+                alt="Hero Athlete"
+                priority
+                className="w-full h-auto object-contain lg:scale-157" // 👈 Doubles visual size
+              />
             </div>
           </motion.div>
         </div>

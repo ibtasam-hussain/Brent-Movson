@@ -2,31 +2,21 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Salad, Dumbbell, Flame } from "lucide-react";
-import { TbPizza } from "react-icons/tb";
 
+// Bubble type
 interface Bubble {
-  id: number;
+  id: string;
   text: string;
   left: number;
   duration: number;
   size: string;
 }
 
-interface Card {
-  icon: React.ReactNode;
-  title: string;
-  subtitle: string;
-}
-
-// 👇 global counter for unique keys
-let globalId = 0;
-
 export default function ProblemSection() {
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const texts: string[] = [
+  const texts = [
     "Cut carbs →",
     "binged later.",
     "Trained hard →",
@@ -43,35 +33,47 @@ export default function ProblemSection() {
 
   useEffect(() => {
     const createBubble = () => {
-      const text = texts[Math.floor(Math.random() * texts.length)];
-      const left = Math.random() * 90; // random horizontal position
-      const duration = 10 + Math.random() * 4; // slower & smoother
-      const sizeOptions = [
-        "text-sm px-3 py-1",
-        "text-base px-4 py-1.5",
-        "text-lg px-5 py-2",
-      ];
-      const size = sizeOptions[Math.floor(Math.random() * sizeOptions.length)];
+      // limit to 2 bubbles at a time for cleaner look
+      setBubbles((prev) => {
+        if (prev.length >= 2) return prev;
 
-      const newBubble: Bubble = {
-        id: globalId++,
-        text,
-        left,
-        duration,
-        size,
-      };
+        const text = texts[Math.floor(Math.random() * texts.length)];
+        const left = Math.random() * 85 + 5; // avoid touching edges
+        const duration = 12 + Math.random() * 6;
+        const sizeOptions = [
+          "text-sm px-3 py-1",
+          "text-base px-4 py-1.5",
+          "text-lg px-5 py-2",
+        ];
+        const size =
+          sizeOptions[Math.floor(Math.random() * sizeOptions.length)];
 
-      setBubbles((prev) => [...prev, newBubble]);
+        const newBubble: Bubble = {
+          id: crypto.randomUUID(), // ✅ unique key each time
+          text,
+          left,
+          duration,
+          size,
+        };
 
-      // remove after animation ends
-      setTimeout(() => {
-        setBubbles((prev) => prev.filter((b) => b.id !== newBubble.id));
-      }, duration * 2000);
+        return [...prev, newBubble];
+      });
     };
 
-    const interval = setInterval(createBubble, 900);
+    const interval = setInterval(createBubble, 2000 + Math.random() * 1000); // spawn slower
     return () => clearInterval(interval);
   }, [texts]);
+
+  // Auto-remove bubbles after their lifetime
+  useEffect(() => {
+    const timers = bubbles.map((b) =>
+      setTimeout(() => {
+        setBubbles((prev) => prev.filter((x) => x.id !== b.id));
+      }, b.duration * 1000)
+    );
+
+    return () => timers.forEach(clearTimeout);
+  }, [bubbles]);
 
   return (
     <section
@@ -83,14 +85,15 @@ export default function ProblemSection() {
         {bubbles.map((b) => (
           <motion.div
             key={b.id}
-            initial={{ opacity: 0, y: 100 }} // 👈 start just below bottom
+            initial={{ opacity: 0, y: 100 }}
             animate={{
-              opacity: [0.2, 1, 1, 0], // fade in, stay, fade out
-              y: -900, // 👈 go all the way to the top
-              scale: [b.size.includes("text-lg") ? 1 : 0.95, 1.05],
+              opacity: [0, 1, 1, 0],
+              y: -900,
+              x: [0, Math.random() * 40 - 20], // slight horizontal drift
+              scale: [1, 1.05, 1],
             }}
             transition={{
-              duration: b.duration * 1.8, // slower upward movement
+              duration: b.duration,
               ease: "easeInOut",
             }}
             style={{

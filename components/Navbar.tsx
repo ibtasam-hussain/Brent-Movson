@@ -38,16 +38,25 @@ export default function Navbar() {
           {/* ---------- Center Menu ---------- */}
           <div className="hidden md:flex items-center flex-grow justify-end mr-8">
             <div className="bg-[#1a1a1a]/80 border border-gray-800 rounded-full px-10 py-2 flex space-x-8 text-sm font-medium text-gray-200">
-              <Link href="#who-its-for" className="hover:text-white transition-colors">
+              <Link
+                href="#who-its-for"
+                className="hover:text-white transition-colors"
+              >
                 Who It’s For
               </Link>
-              <Link href="#programs" className="hover:text-white transition-colors">
+              <Link
+                href="#programs"
+                className="hover:text-white transition-colors"
+              >
                 Programs
               </Link>
               <Link href="#faq" className="hover:text-white transition-colors">
                 Pricing
               </Link>
-              <Link href="#in-person" className="hover:text-white transition-colors">
+              <Link
+                href="#in-person"
+                className="hover:text-white transition-colors"
+              >
                 In-Person
               </Link>
             </div>
@@ -55,27 +64,15 @@ export default function Navbar() {
 
           {/* ---------- CTA Button ---------- */}
           <div className="flex-shrink-0 ml-4 sm:ml-6 md:ml-8 lg:ml-10">
-<a
-  href="https://www.trainerize.me/profile/bm21/?planGUID=9178eecceba5456e8e2b7bcd4f9d7f25&mode=checkout"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
-    bg-[#29E3B0] hover:bg-[#20c49a] text-black
-    font-semibold rounded-full inline-flex items-center justify-center gap-2
-    px-4 py-2 text-xs
-    sm:px-5 sm:py-2.5 sm:text-sm
-    md:px-6 md:py-3 md:text-base
-    lg:px-8 lg:py-3.5 lg:text-lg
-    transition-all duration-300
-    shadow-md hover:shadow-lg
-  "
->
-  <span className="text-base sm:text-lg md:text-xl lg:text-2xl">
-    <CiDumbbell />
-  </span>
-  Apply for Coaching
-</a>
-
+            <Link
+              href="#faq"
+              className="hidden md:inline-flex items-center bg-[#3EF4C8] hover:bg-[#36cbb3] text-black font-semibold rounded-full px-5 py-3 transition-colors duration-300"
+            >
+              <span className="text-base sm:text-lg md:text-xl lg:text-2xl">
+                <CiDumbbell />
+              </span>
+              Apply for Coaching
+            </Link>
           </div>
         </div>
       </div>
