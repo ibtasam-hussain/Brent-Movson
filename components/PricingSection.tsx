@@ -11,7 +11,8 @@ export default function PricingSection() {
   const plans = [
     {
       name: "Fitness-Only Coaching",
-      subtitle: "Ideal if you just want the workouts and structure.",
+      displayTitle: "Fitness Coaching",
+      subtitle: "online coaching",
       price: "$165 / month",
       period: "12-week commitment",
       features: [
@@ -24,8 +25,8 @@ export default function PricingSection() {
     },
     {
       name: "Full Coaching (Nutrition + Training)",
-      subtitle:
-        "Perfect for professionals ready to transform both body & habits.",
+      displayTitle: "Fitness + Nutrition Coaching",
+      subtitle: "online coaching",
       price: "$299 / month",
       period: "12-week commitment",
       features: [
@@ -40,9 +41,9 @@ export default function PricingSection() {
     },
     {
       name: "Private Coaching",
-      subtitle:
-        "Ideal if you just want Private, 1-on-1 training sessions with Brent.",
-      price: "Bay Area/ Marin", // ✅ Price removed
+      displayTitle: "Private Coaching",
+      subtitle: "1:1 In-person",
+      price: "Bay Area/ Marin",
       period: "",
       features: [
         "Exclusive 1:1 training in a private setting with Brent",
@@ -89,7 +90,7 @@ export default function PricingSection() {
           {plans.map((plan, i) => (
             <motion.div
               key={i}
-              id={i === plans.length - 1 ? "in-person-card" : undefined} // ✅ Added here correctly
+              id={i === plans.length - 1 ? "in-person-card" : undefined}
               initial={{ y: 40, opacity: 0 }}
               animate={isInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.2 }}
@@ -107,20 +108,23 @@ export default function PricingSection() {
               )}
 
               <div>
-                <h3 className="text-2xl font-bold mb-3">{plan.name}</h3>
-                <p className="text-sm text-gray-300 leading-snug mb-8">
+                {/* ✅ Updated Title */}
+                <h3 className="text-2xl font-bold mb-1">{plan.displayTitle}</h3>
+
+                {/* ✅ Updated Subtitle */}
+                <p className="text-xs uppercase tracking-wide text-[#00E6BE] mb-8">
                   {plan.subtitle}
                 </p>
 
-                {/* ✅ Price Section (only show if price exists) */}
+                {/* ✅ Price Section */}
                 {plan.price && (
                   <div className="mb-8 text-center w-full">
                     <div className="bg-[#00E6BE] text-black font-semibold text-xl py-3 px-6 rounded-full inline-block">
                       {plan.price}
                     </div>
-                    <p className="text-xs mt-3 text-[#00E6BE]">
-                      {plan.period}
-                    </p>
+                    {plan.period && (
+                      <p className="text-xs mt-3 text-[#00E6BE]">{plan.period}</p>
+                    )}
                   </div>
                 )}
 
@@ -134,7 +138,7 @@ export default function PricingSection() {
                 </ul>
               </div>
 
-              {/* ✅ Button text changes for 3rd plan */}
+              {/* ✅ Button text stays based on 3rd card */}
               <a
                 href="https://calendly.com/brent-ykk/health-coaching-w-brent?month=2025-10"
                 target="_blank"
