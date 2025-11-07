@@ -1,31 +1,140 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion";
+import { Flame } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Marquee() {
-  const text = " • MOVE BETTER • FEEL BETTER • LIVE BETTER • MOVE BETTER • FEEL BETTER • LIVE BETTER • MOVE BETTER • FEEL BETTER • LIVE BETTER • MOVE BETTER • FEEL BETTER • LIVE BETTER"
+  const controls = useAnimation();
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
 
-  return (
-    <div className="bg-[#0b2f2a] py-6 overflow-hidden">
-      <motion.div
-        animate={{ x: ["0%", "-80.33%"] }} // moves one-third of total width
-        transition={{
+  const textItems = [
+    "Fix Your Metabolism",
+    "Hormonal Imbalance",
+    "Insulin Resistance",
+    "End Fatigue",
+    "Body Composition",
+    "Balance Cortisol",
+    "Support Thyroid",
+    "PCOS-Friendly",
+    "Blood Sugar",
+    "Lower Blood Pressure",
+    "Lower Cholesterol",    "Fix Your Metabolism",
+    "Hormonal Imbalance",
+    "Insulin Resistance",
+    "End Fatigue",
+    "Body Composition",
+    "Balance Cortisol",
+    "Support Thyroid",
+    "PCOS-Friendly",
+    "Blood Sugar",
+    "Lower Blood Pressure",
+    "Lower Cholesterol",    "Fix Your Metabolism",
+    "Hormonal Imbalance",
+    "Insulin Resistance",
+    "End Fatigue",
+    "Body Composition",
+    "Balance Cortisol",
+    "Support Thyroid",
+    "PCOS-Friendly",
+    "Blood Sugar",
+    "Lower Blood Pressure",
+    "Lower Cholesterol",    "Fix Your Metabolism",
+    "Hormonal Imbalance",
+    "Insulin Resistance",
+    "End Fatigue",
+    "Body Composition",
+    "Balance Cortisol",
+    "Support Thyroid",
+    "PCOS-Friendly",
+    "Blood Sugar",
+    "Lower Blood Pressure",
+    "Lower Cholesterol",    "Fix Your Metabolism",
+    "Hormonal Imbalance",
+    "Insulin Resistance",
+    "End Fatigue",
+    "Body Composition",
+    "Balance Cortisol",
+    "Support Thyroid",
+    "PCOS-Friendly",
+    "Blood Sugar",
+    "Lower Blood Pressure",
+    "Lower Cholesterol",    "Fix Your Metabolism",
+    "Hormonal Imbalance",
+    "Insulin Resistance",
+    "End Fatigue",
+    "Body Composition",
+    "Balance Cortisol",
+    "Support Thyroid",
+    "PCOS-Friendly",
+    "Blood Sugar",
+    "Lower Blood Pressure",
+    "Lower Cholesterol",
+  ];
+
+  useEffect(() => {
+    if (marqueeRef.current) {
+      setWidth(marqueeRef.current.scrollWidth / 2); // half width since duplicated twice
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!width) return;
+
+    const startAnimation = () => {
+      controls.start({
+        x: [0, -width],
+        transition: {
           repeat: Infinity,
           repeatType: "loop",
-          duration: 15, // adjust speed
+          duration: 100, // Adjust speed here (lower = faster)
           ease: "linear",
-        }}
-        className="flex whitespace-nowrap"
+        },
+      });
+    };
+
+    startAnimation();
+  }, [controls, width]);
+
+  const handleMouseEnter = () => controls.stop();
+  const handleMouseLeave = () => {
+    controls.start({
+      x: [0, -width],
+      transition: {
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 100,
+        ease: "linear",
+      },
+    });
+  };
+
+  return (
+    <div
+      className="bg-[#0b2f2a] py-6 overflow-hidden cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <motion.div
+        ref={marqueeRef}
+        animate={controls}
+        className="flex whitespace-nowrap items-center"
       >
-        {[...Array(3)].map((_, i) => (
-          <span
-            key={i}
-            className="text-white text-4xl md:text-5xl font-semibold tracking-[0.15em] mx-8 uppercase"
-          >
-            {text}
-          </span>
+        {/* duplicate twice for continuous scrolling */}
+        {[...Array(2)].map((_, i) => (
+          <div key={i} className="flex items-center space-x-8 mx-8">
+            {textItems.map((text, index) => (
+              <div key={`${i}-${index}`} className="flex items-center space-x-3">
+                <span className="text-white text-3xl md:text-4xl font-semibold uppercase tracking-wide">
+                  {text}
+                </span>
+                <Flame className="text-[#04CFAB] w-8 h-8 flex-shrink-0" />
+              </div>
+            ))}
+          </div>
         ))}
       </motion.div>
     </div>
-  )
+  );
 }

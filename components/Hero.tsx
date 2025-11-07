@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import heroBg from "../public/hero.svg";
-import heroPerson from "@/public/hero image (1).svg";
+import heroBg from "../public/hero.jpg";
+import heroPerson from "@/public/hero.jpg";
 import Link from "next/link";
 
 export default function Hero() {
@@ -76,21 +76,22 @@ min-h-[clamp(28rem,62vh,44rem)] py-10 md:py-12
           </motion.div>
 
           {/* Right: Image */}
-          <motion.div
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="lg:col-span-6 flex justify-center lg:justify-end"
-          >
-            <div className="relative w-full max-w-[520px] sm:max-w-[600px] md:max-w-[680px] lg:max-w-[720px] xl:max-w-[780px]">
-              <Image
-                src={heroPerson}
-                alt="Hero Athlete"
-                priority
-                className="w-full h-auto object-contain lg:scale-157" // 👈 Doubles visual size
-              />
-            </div>
-          </motion.div>
+<motion.div
+  initial={{ x: 100, opacity: 0 }}
+  animate={{ x: 0, opacity: 1 }}
+  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+  className="lg:col-span-6 flex justify-center lg:justify-end"
+>
+  <div className="relative w-full rounded-2xl max-w-[520px] sm:max-w-[600px] md:max-w-[680px] lg:max-w-[720px] xl:max-w-[780px] overflow-hidden">
+    <Image
+      src={heroPerson}
+      alt="Hero Athlete"
+      priority
+      className="w-full h-auto object-contain"
+    />
+  </div>
+</motion.div>
+
         </div>
       </div>
 

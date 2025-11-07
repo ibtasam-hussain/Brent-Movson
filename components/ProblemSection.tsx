@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
-// Bubble type
 interface Bubble {
   id: string;
   text: string;
@@ -14,7 +13,8 @@ interface Bubble {
 
 export default function ProblemSection() {
   const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { margin: "-100px" }); // no once:true (so it keeps triggering)
+  const [bubbles, setBubbles] = useState<Bubble[]>([]);
 
   const texts = [
     "Cut carbs →",
@@ -29,51 +29,38 @@ export default function ProblemSection() {
     "Maybe I’m missing something?",
   ];
 
-  const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  // 🫧 Create bubbles only when section is visible
+useEffect(() => {
+  if (!isInView) return;
 
-  useEffect(() => {
-    const createBubble = () => {
-      // limit to 2 bubbles at a time for cleaner look
-      setBubbles((prev) => {
-        if (prev.length >= 2) return prev;
+  const createBubble = () => {
+    const text = texts[Math.floor(Math.random() * texts.length)];
+    const left = Math.random() * 85 + 5;
+    const duration = 10 + Math.random() * 6;
+    const sizeOptions = [
+      "text-sm px-3 py-1",
+      "text-base px-4 py-1.5",
+      "text-lg px-5 py-2",
+    ];
+    const size = sizeOptions[Math.floor(Math.random() * sizeOptions.length)];
 
-        const text = texts[Math.floor(Math.random() * texts.length)];
-        const left = Math.random() * 85 + 5; // avoid touching edges
-        const duration = 12 + Math.random() * 6;
-        const sizeOptions = [
-          "text-sm px-3 py-1",
-          "text-base px-4 py-1.5",
-          "text-lg px-5 py-2",
-        ];
-        const size =
-          sizeOptions[Math.floor(Math.random() * sizeOptions.length)];
+    setBubbles((prev) => [
+      ...prev,
+      { id: crypto.randomUUID(), text, left, duration, size },
+    ]);
+  };
 
-        const newBubble: Bubble = {
-          id: crypto.randomUUID(), // ✅ unique key each time
-          text,
-          left,
-          duration,
-          size,
-        };
+  // 🔥 Immediately create first few bubbles (for instant start)
+  for (let i = 0; i < 3; i++) {
+    createBubble();
+  }
 
-        return [...prev, newBubble];
-      });
-    };
+  // 🔁 Continue creating bubbles every 0.8s (faster)
+  const interval = setInterval(createBubble, 800);
 
-    const interval = setInterval(createBubble, 2000 + Math.random() * 1000); // spawn slower
-    return () => clearInterval(interval);
-  }, [texts]);
+  return () => clearInterval(interval);
+}, [isInView]);
 
-  // Auto-remove bubbles after their lifetime
-  useEffect(() => {
-    const timers = bubbles.map((b) =>
-      setTimeout(() => {
-        setBubbles((prev) => prev.filter((x) => x.id !== b.id));
-      }, b.duration * 1000)
-    );
-
-    return () => timers.forEach(clearTimeout);
-  }, [bubbles]);
 
   return (
     <section
@@ -89,7 +76,7 @@ export default function ProblemSection() {
             animate={{
               opacity: [0, 1, 1, 0],
               y: -900,
-              x: [0, Math.random() * 40 - 20], // slight horizontal drift
+              x: [0, Math.random() * 40 - 20],
               scale: [1, 1.05, 1],
             }}
             transition={{

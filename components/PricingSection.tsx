@@ -12,8 +12,8 @@ export default function PricingSection() {
     {
       name: "Fitness-Only Coaching",
       subtitle: "Ideal if you just want the workouts and structure.",
-      price: "$165",
-      period: "/ 4 weeks",
+      price: "$165 / month",
+      period: "12-week commitment",
       features: [
         "BM2 App access",
         "S.H.A.P.E. hybrid training",
@@ -26,8 +26,8 @@ export default function PricingSection() {
       name: "Full Coaching (Nutrition + Training)",
       subtitle:
         "Perfect for professionals ready to transform both body & habits.",
-      price: "$299",
-      period: "/ 4 weeks",
+      price: "$299 / month",
+      period: "12-week commitment",
       features: [
         "Personalized macros + 1:1 Coaching with a nutritionist",
         "Concierge daily access",
@@ -39,13 +39,13 @@ export default function PricingSection() {
       highlight: true,
     },
     {
-      name: "Private Coaching in Tiburon / Marin",
+      name: "Private Coaching",
       subtitle:
-        "Ideal if you just want Private, 1-on-1 training in Tiburon / Marin.",
-      price: "$900",
-      period: "/ 10 sessions",
+        "Ideal if you just want Private, 1-on-1 training sessions with Brent.",
+      price: "Bay Area/ Marin", // ✅ Price removed
+      period: "",
       features: [
-        "Exclusive 1:1 training in a private with Brent",
+        "Exclusive 1:1 training in a private setting with Brent",
         "1:1 coaching with nutritionist",
         "Custom workouts designed for you and no one else",
         "Accountability and results",
@@ -65,11 +65,10 @@ export default function PricingSection() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
         style={{
           backgroundImage: `url(${Pbg.src})`,
-          filter: "brightness(25%)", // ✅ darken image but keep faintly visible
+          filter: "brightness(25%)",
         }}
       ></div>
 
-      {/* Optional subtle overlay for smooth darkness */}
       <div className="absolute inset-0 bg-black/60" />
 
       <div className="relative max-w-7xl mx-auto">
@@ -81,8 +80,7 @@ export default function PricingSection() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-25 tracking-tight">
-            PRICING {"  "}
-            <span className="text-[#00E6BE]">PLANS</span>
+            COACHING <span className="text-[#00E6BE]">PROGRAMS</span>
           </h2>
         </motion.div>
 
@@ -91,6 +89,7 @@ export default function PricingSection() {
           {plans.map((plan, i) => (
             <motion.div
               key={i}
+              id={i === plans.length - 1 ? "in-person-card" : undefined} // ✅ Added here correctly
               initial={{ y: 40, opacity: 0 }}
               animate={isInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.2 }}
@@ -113,12 +112,17 @@ export default function PricingSection() {
                   {plan.subtitle}
                 </p>
 
-                <div className="mb-8">
-                  <span className="text-5xl font-bold text-[#00E6BE]">
-                    {plan.price}
-                  </span>
-                  <p className="text-sm mt-2 text-gray-400">{plan.period}</p>
-                </div>
+                {/* ✅ Price Section (only show if price exists) */}
+                {plan.price && (
+                  <div className="mb-8 text-center w-full">
+                    <div className="bg-[#00E6BE] text-black font-semibold text-xl py-3 px-6 rounded-full inline-block">
+                      {plan.price}
+                    </div>
+                    <p className="text-xs mt-3 text-[#00E6BE]">
+                      {plan.period}
+                    </p>
+                  </div>
+                )}
 
                 <ul className="space-y-4 mb-10">
                   {plan.features.map((feature, idx) => (
@@ -130,6 +134,7 @@ export default function PricingSection() {
                 </ul>
               </div>
 
+              {/* ✅ Button text changes for 3rd plan */}
               <a
                 href="https://calendly.com/brent-ykk/health-coaching-w-brent?month=2025-10"
                 target="_blank"
@@ -140,7 +145,7 @@ export default function PricingSection() {
                     : "border-[#00E6BE] text-[#00E6BE] hover:bg-[#00E6BE] hover:text-black"
                 }`}
               >
-                Apply Now
+                {i === 2 ? "Book a Call" : "Get Started Now"}
               </a>
             </motion.div>
           ))}

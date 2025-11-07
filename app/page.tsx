@@ -20,6 +20,7 @@ export default function Home() {
       <section id="who-its-for">
         <Hero />
       </section>
+        <Marquee />
 
       {/* ---------- In-Person ---------- */}
       <section id="programs">
@@ -28,7 +29,6 @@ export default function Home() {
       </section>
 
       <section id="in-person">
-        <Marquee />
 
         {/* ---------- Programs ---------- */}
 

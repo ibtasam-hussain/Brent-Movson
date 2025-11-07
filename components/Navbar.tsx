@@ -42,7 +42,7 @@ export default function Navbar() {
                 href="#who-its-for"
                 className="hover:text-white transition-colors"
               >
-                Who It’s For
+                Home
               </Link>
               <Link
                 href="#programs"
@@ -53,27 +53,27 @@ export default function Navbar() {
               <Link href="#faq" className="hover:text-white transition-colors">
                 Pricing
               </Link>
-              <Link
-                href="#in-person"
-                className="hover:text-white transition-colors"
-              >
-                In-Person
-              </Link>
+<Link href="#in-person-card" className="hover:text-white transition-colors">
+  In-Person
+</Link>
+
             </div>
           </div>
 
           {/* ---------- CTA Button ---------- */}
-          <div className="flex-shrink-0 ml-4 sm:ml-6 md:ml-8 lg:ml-10">
-            <Link
-              href="#faq"
-              className="hidden md:inline-flex items-center bg-[#3EF4C8] hover:bg-[#36cbb3] text-black font-semibold rounded-full px-5 py-3 transition-colors duration-300"
-            >
-              <span className="text-base sm:text-lg md:text-xl lg:text-2xl">
-                <CiDumbbell />
-              </span>
-              Apply for Coaching
-            </Link>
-          </div>
+{/* ---------- CTA Button ---------- */}
+<div className="flex-shrink-0 ml-4 sm:ml-6 md:ml-8 lg:ml-10">
+  <Link
+    href="#faq"
+    className="inline-flex items-center bg-[#3EF4C8] hover:bg-[#36cbb3] text-black font-semibold rounded-full px-4 sm:px-5 py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base md:text-lg"
+  >
+    <span className="text-lg sm:text-xl md:text-2xl mr-2">
+      <CiDumbbell />
+    </span>
+    Join Now
+  </Link>
+</div>
+
         </div>
       </div>
 
@@ -81,7 +81,7 @@ export default function Navbar() {
       <div className="md:hidden flex justify-center py-3 bg-[#0a0a0a]/90 backdrop-blur-sm">
         <div className="flex space-x-6 text-sm text-gray-200">
           <Link href="#who-its-for" className="hover:text-white">
-            Who It’s For
+            Home
           </Link>
           <Link href="#programs" className="hover:text-white">
             Programs
@@ -89,9 +89,10 @@ export default function Navbar() {
           <Link href="#faq" className="hover:text-white">
             Pricing
           </Link>
-          <Link href="#in-person" className="hover:text-white">
-            In-Person
-          </Link>
+<Link href="#in-person-card" className="hover:text-white">
+  In-Person
+</Link>
+
         </div>
       </div>
     </motion.nav>
